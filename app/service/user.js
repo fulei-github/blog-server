@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-30 20:37:56
+ * @LastEditTime: 2022-06-30 21:41:13
  */
 
 
@@ -39,7 +39,7 @@ class UserService extends BaseService {
 
   // 查询user表，验证密码和账号---验证账号密码是否匹配--登录用
   async validUser(username, password) {
-    const data = await this._findAll('User'); // 表里的数据[{},{}]
+    const data = await this._findAll('User', {}); // 表里的数据[{},{}]
     const pwd = crypto.createHash('md5').update(password).digest('hex');
     for (const item of data) {
       if (item.username === username && item.password === pwd) return true;

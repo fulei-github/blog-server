@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-30 18:06:54
+ * @LastEditTime: 2022-06-30 21:13:37
  */
 'use strict';
 
@@ -16,8 +16,8 @@ module.exports = app => {
   // 引入鉴权
   // const jwt = middleware.jwt(app.config.jwt);
   // 用户的controller
-  router.get('/user/findAll', controller.user.findAll);
-  router.post('/user/createUser', controller.user.createUser);
+  router.get('/api/user/findAll', controller.user.findAll);
+  router.post('/api/user/createUser', controller.user.createUser);
 
   // 用户登录、获取用户信息
   router.post('/api/user/login', controller.auth.login);
