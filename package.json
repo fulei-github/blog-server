@@ -1,0 +1,54 @@
+{
+  "name": "blog_server",
+  "version": "1.0.0",
+  "description": "server",
+  "private": true,
+  "egg": {
+    "declarations": true
+  },
+  "dependencies": {
+    "egg": "^2",
+    "egg-cors": "^2.2.3",
+    "egg-jwt": "^3.1.7",
+    "egg-scripts": "^2",
+    "egg-sequelize": "^6.0.0",
+    "egg-valparams": "^1.4.5",
+    "koa-json-error": "^3.1.2",
+    "md5": "^2.3.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "autod": "^3",
+    "autod-egg": "^1",
+    "egg-bin": "^4",
+    "egg-ci": "^2",
+    "egg-mock": "^4",
+    "eslint": "^8",
+    "eslint-config-egg": "^12"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-blog_server",
+    "stop": "egg-scripts stop --title=egg-server-blog_server",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "16",
+    "type": "github"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "fulei",
+  "license": "MIT"
+}
