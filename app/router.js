@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-30 15:46:07
+ * @LastEditTime: 2022-07-01 15:07:46
  */
 'use strict';
 
@@ -16,4 +16,5 @@ module.exports = app => {
   router.get('/', controller.home.index);
   // 用户的controller
   require('./router/user')(app);
+  require('./router/category')(app);
 };

@@ -4,11 +4,11 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-30 17:11:53
+ * @LastEditTime: 2022-07-07 17:52:03
  */
 /* eslint valid-jsdoc: "off" */
 
-'use strict';
+'use strict'
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -18,38 +18,38 @@ module.exports = appInfo => {
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = exports = {};
+  const config = exports = {}
 
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1656572640787_1939';
+  config.keys = appInfo.name + '_1656572640787_1939'
 
   // add your middleware config here
-  config.middleware = [ 'error' ];
+  config.middleware = ['error']
   config.error = {
     // 这里使用appInfo.env来判断环境，仅仅在非生产环境下打开堆栈信息，用于调试
     postFormat: rest => rest,
-  };
+  }
   config.jwt = {
     secret: 'fulei+_hello!225', // 可自行定义
-  };
+  }
   // 校验请求的参数
   config.valparams = {
     locale: 'zh-cn',
     throwError: true,
-  };
+  }
   /* 取消安全证书验证，关闭crsf,开启跨域 */
   config.security = {
     csrf: {
       enable: false,
     },
-    domainWhiteList: [ '*' ], // 白名单
-  };
+    domainWhiteList: ['*'], // 白名单
+  }
   /* 配置允许跨域 */
   config.cors = {
     credentials: true,
     origin: '*', // 允许任何跨域，若只允许个别IP跨域，则：origin:['http://localhost:8080']
     allowMethods: 'GET,PUT,POST,DELETE', // 被允许的请求方式
-  };
+  }
   /* 连接mysql配置 */
   config.sequelize = {
     dialect: 'mysql',
@@ -73,14 +73,14 @@ module.exports = appInfo => {
       // 所有驼峰命名格式化
       underscored: true,
     },
-  };
+  }
 
   const userConfig = {
     // myAppName: 'egg',
-  };
+  }
 
   return {
     ...config,
     ...userConfig,
-  };
-};
+  }
+}
