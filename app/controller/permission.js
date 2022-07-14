@@ -4,18 +4,18 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-13 15:14:07
+ * @LastEditTime: 2022-07-14 23:58:56
  */
 // app/controller/user.js
 'use strict';
 
 const BaseController = require('./base');
 
-class CategoryController extends BaseController {
+class PermissionController extends BaseController {
   // 查询所有数据
   async findAll() {
     const { service } = this;
-    const result = await service.category.findAll();
+    const result = await service.permission.findAll();
     this.success(result, 'OK');
   }
   // 新增分类
@@ -70,4 +70,4 @@ class CategoryController extends BaseController {
 
 }
 
-module.exports = CategoryController;
+module.exports = PermissionController;

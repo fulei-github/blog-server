@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-01 15:08:08
+ * @LastEditTime: 2022-07-13 15:02:22
  */
 'use strict';
 
@@ -15,5 +15,6 @@ module.exports = app => {
   const { router, controller } = app;
   // 分类的controller
   router.get('/api/category/findAll', controller.category.findAll);
+  router.post('/api/category/addCatgory', controller.category.addCatgory);
 
 };

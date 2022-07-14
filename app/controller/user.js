@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-01 11:52:39
+ * @LastEditTime: 2022-07-14 23:40:17
  */
 // app/controller/user.js
 'use strict';
@@ -36,8 +36,9 @@ class UserController extends BaseController {
   // 根据前端传的id删除用户
   async delUserById() {
     const { ctx, service } = this;
-    const id = ctx.body.id;
-    const result = await service.user.del(id);
+    const id = ctx.query.id;
+    console.log('------------id------------', id);
+    const result = await service.user.delUserById(id);
     if (result === 'Server error') this.error(0, result);
     this.success(1, result);
   }

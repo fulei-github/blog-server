@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-01 16:07:52
+ * @LastEditTime: 2022-07-14 22:43:08
  */
 'use strict';
 module.exports = app => {
@@ -18,6 +18,7 @@ module.exports = app => {
     phone: { type: STRING(200), allowNull: false, defaultValue: '' },
     state: { type: STRING(30), allowNull: false, defaultValue: '' },
     email: { type: STRING(30), allowNull: false, defaultValue: '' },
+    permission: { type: STRING(30), allowNull: false, defaultValue: '' },
     age: INTEGER,
     created_at: DATE,
     updated_at: DATE,

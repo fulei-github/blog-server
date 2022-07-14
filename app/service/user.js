@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-01 11:53:00
+ * @LastEditTime: 2022-07-14 23:30:43
  */
 
 
@@ -41,9 +41,9 @@ class UserService extends BaseService {
   async validUser(username, password) {
     const data = await this._findAll('User', {}); // 表里的数据[{},{}]
     const pwd = crypto.createHash('md5').update(password).digest('hex');
-    console.log('-----data-----', data);
+    // console.log('-----data-----', data);
     for (const item of data) {
-      if (item.username === username && item.password === pwd) return item;
+      if (item.username === username && item.password === pwd) return { username: item.username, nickname: item.nickname, phone: item.phone, state: item.state, email: item.email, age: item.age, permission: item.permission, id: item.id };
     }
     return false;
   }
@@ -63,13 +63,13 @@ class UserService extends BaseService {
     console.log('---req----', req);
     const data = await this._findAll('User', {});
     for (const item of data) {
-      if (req.username === item.username || req.phone === item.phone || req.created_at === item.created_at || req.state === item.state) return item;
+      if (req.username === item.username || req.phone === item.phone || req.state === item.state) return item;
     }
     return false;
   }
 
   // 删除用户数据
-  async del22(id) {
+  async delUserById(id) {
     const data = await this._delete('User', id);
     if (!data) return 'Id传入有误';
     return data;

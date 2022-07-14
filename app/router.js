@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-01 15:07:46
+ * @LastEditTime: 2022-07-14 23:58:11
  */
 'use strict';
 
@@ -17,4 +17,5 @@ module.exports = app => {
   // 用户的controller
   require('./router/user')(app);
   require('./router/category')(app);
+  require('./router/permission')(app);
 };

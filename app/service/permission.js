@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-14 22:05:56
+ * @LastEditTime: 2022-07-15 00:00:13
  */
 
 
@@ -12,15 +12,15 @@
 
 const BaseService = require('./base');
 
-class CategoryService extends BaseService {
+class PermissionService extends BaseService {
 
-  // 查询所有分类数据
+  // 查询所有角色数据
   async findAll() {
     const { ctx } = this;
     const req = ctx.request.body;
     console.log('----req-----', req);
-    const data = await this._findAll('Category', req);
-    const total = await this._count('Category');
+    const data = await this._findAll('Permission', req);
+    const total = await this._count('Permission');
     return { total, data };
   }
 
@@ -80,4 +80,4 @@ class CategoryService extends BaseService {
 
 }
 
-module.exports = CategoryService;
+module.exports = PermissionService;

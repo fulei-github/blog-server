@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-07 16:41:09
+ * @LastEditTime: 2022-07-14 23:31:55
  */
 'use strict';
 
@@ -21,7 +21,8 @@ module.exports = app => {
   // 用户登录、获取用户信息
   router.post('/api/user/login', controller.auth.login);
   router.get('/api/user/getUserInfo', jwt, controller.auth.getUserInfo);
-  router.get('/api/user/findAll', controller.user.findAll);
-  router.get('/api/user/findUserByReq', jwt, controller.user.findUserByReq);
+  router.post('/api/user/findAll', jwt, controller.user.findAll);
+  router.post('/api/user/findUserByReq', jwt, controller.user.findUserByReq);
+  router.post('/api/user/delUserById', jwt, controller.user.delUserById);
 
 };

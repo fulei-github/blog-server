@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-06-30 20:48:08
+ * @LastEditTime: 2022-07-14 23:43:54
  */
 'use strict';
 
@@ -82,7 +82,7 @@ class BaseService extends Service {
       const result = await ctx.model[modelName].findByPk(key);
       if (!result) return false;
       await result.destroy();
-      return true;
+      return '删除成功！';
     } catch (error) {
       return 'Server error';
     }
