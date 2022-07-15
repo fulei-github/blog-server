@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-14 23:58:56
+ * @LastEditTime: 2022-07-15 17:06:34
  */
 // app/controller/user.js
 'use strict';
@@ -18,56 +18,36 @@ class PermissionController extends BaseController {
     const result = await service.permission.findAll();
     this.success(result, 'OK');
   }
-  // 新增分类
-  async addCatgory() {
+  // 新增角色
+  async addRole() {
     const { service } = this;
-    const result = await service.category.addCatgory();
+    const result = await service.permission.addRole();
     if (result) {
       this.success(result, 'OK');
     } else {
-      this.error('已存在相同的分类！', '1');
+      this.error('已存在相同的角色！', '1');
     }
 
-  }
-  // 通过搜索条件查询用户信息 username  phone  createDate   state
-  async findUserByReq() {
-    const { service } = this;
-    const result = await service.user.findUserByReq();
-    if (result) {
-      this.success(result, 'OK');
-    } else {
-      this.error('系统查询不到该用户信息');
-    }
   }
 
   // 根据前端传的id删除用户
   async delUserById() {
     const { ctx, service } = this;
-    const id = ctx.body.id;
-    const result = await service.user.del(id);
+    const id = ctx.request.body.id;
+    console.log('----------id----------', id);
+    const result = await service.permission.del(id);
     if (result === 'Server error') this.error(0, result);
     this.success(1, result);
   }
 
-
-  // 根据ID查数据
-  async findById() {
+  // 修改数据
+  async edit() {
     const { ctx, service } = this;
-    const id = ctx.params.id;
-    const result = await service.user.findById(id);
-    this.success(result, 'OK');
-  }
-
-  // 新增数据
-  async add() {
-    const { ctx, service } = this;
-    const { username, nickname, avatar, sex, age } = ctx.request.body;
-    const result = await service.user.add({ id: new Date().valueOf(), username, nickname, avatar, sex, age });
+    const { id, permission, desc } = ctx.request.body;
+    const result = await service.permission.edit({ id, permission, desc });
     if (result === 'Server error') this.error(0, result);
     this.success(1, result);
   }
-
-
 }
 
 module.exports = PermissionController;

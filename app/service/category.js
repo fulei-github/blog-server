@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-14 22:05:56
+ * @LastEditTime: 2022-07-15 20:17:40
  */
 
 
@@ -18,62 +18,38 @@ class CategoryService extends BaseService {
   async findAll() {
     const { ctx } = this;
     const req = ctx.request.body;
-    console.log('----req-----', req);
+    // console.log('----req-----', req);
     const data = await this._findAll('Category', req);
     const total = await this._count('Category');
     return { total, data };
   }
 
-  // 新增分类数据
+  // 新增分类
   async addCatgory() {
     const { ctx } = this;
     const req = ctx.request.body;
     const data = await this._findAll('Category', {});
-    // const flag = data.find(item => item.name === req.name);
+
     for (const item of data) {
-      // if (req.name === item.name) return false;
       if (req.name === item.name) {
         return false;
       }
       const res = await this.add({ name: req.name }, '新增分类成功！');
-      console.log(res);
 
+      return res;
     }
-    // console.log('----flag-----', flag);
-    // if (flag) {
-    //   return false;
-    // }
-    // const res = await this.add('Category', req, '新增分类成功！');
-
-    // return res;
   }
-  // 新增用户数据
-  async add(json, msg) {
-    return await this._add('Category', json, msg);
+  // 新增分类
+  async add(json) {
+    const { ctx } = this;
+    // const res = await this._add('Category', json, msg);
+    const res = await ctx.model.Category.create(json);
+    console.log('-------res', res);
+    return res;
   }
-  // 删除用户数据
-  async del22(id) {
-    const data = await this._delete('User', id);
-    if (!data) return 'Id传入有误';
-    return data;
-  }
-
-  // 根据ID查询用户数据
-  async findById(id) {
-    return await this._findById('User', id);
-  }
-
-
-  // 编辑用户数据
-  async edit(json) {
-    const data = await this._edit('User', json);
-    if (!data) return 'Id传入有误';
-    return data;
-  }
-
-  // 删除用户数据
+  // 删除分类
   async del(id) {
-    const data = await this._delete('User', id);
+    const data = await this._delete('Category', id);
     if (!data) return 'Id传入有误';
     return data;
   }

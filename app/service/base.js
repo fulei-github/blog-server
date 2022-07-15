@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-14 23:43:54
+ * @LastEditTime: 2022-07-15 17:24:58
  */
 'use strict';
 
@@ -55,7 +55,9 @@ class BaseService extends Service {
   async _add(modelName, json, msg) {
     const { ctx } = this;
     try {
+      console.log('------json------', modelName, json, msg);
       await ctx.model[modelName].create(json);
+      console.log('-----------msg', msg);
       return msg;
     } catch (error) {
       return 'Server error';

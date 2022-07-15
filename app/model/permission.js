@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-15 00:01:04
+ * @LastEditTime: 2022-07-15 16:45:53
  */
 'use strict';
 module.exports = app => {
@@ -13,6 +13,7 @@ module.exports = app => {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
     // creartor_id: { type: INTEGER },
     permission: { type: STRING(200), allowNull: false, defaultValue: '', comment: '角色名称', unique: true },
+    desc: { type: STRING(200), allowNull: false },
     created_at: DATE,
     updated_at: DATE,
     deleted_at: DATE,

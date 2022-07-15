@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-15 00:00:13
+ * @LastEditTime: 2022-07-15 17:08:29
  */
 
 
@@ -24,60 +24,38 @@ class PermissionService extends BaseService {
     return { total, data };
   }
 
-  // 新增分类数据
-  async addCatgory() {
+  // 新增角色
+  async addRole() {
     const { ctx } = this;
     const req = ctx.request.body;
-    const data = await this._findAll('Category', {});
+    const data = await this._findAll('Permission', {});
     // const flag = data.find(item => item.name === req.name);
     for (const item of data) {
       // if (req.name === item.name) return false;
-      if (req.name === item.name) {
+      if (req.permission === item.permission) {
         return false;
       }
-      const res = await this.add({ name: req.name }, '新增分类成功！');
-      console.log(res);
-
+      const res = await this.add({ permission: req.permission, desc: req.desc }, '新增角色成功！');
+      return res;
     }
-    // console.log('----flag-----', flag);
-    // if (flag) {
-    //   return false;
-    // }
-    // const res = await this.add('Category', req, '新增分类成功！');
-
-    // return res;
   }
-  // 新增用户数据
+  // 新增角色
   async add(json, msg) {
-    return await this._add('Category', json, msg);
+    return await this._add('Permission', json, msg);
   }
-  // 删除用户数据
-  async del22(id) {
-    const data = await this._delete('User', id);
-    if (!data) return 'Id传入有误';
-    return data;
-  }
-
-  // 根据ID查询用户数据
-  async findById(id) {
-    return await this._findById('User', id);
-  }
-
-
-  // 编辑用户数据
-  async edit(json) {
-    const data = await this._edit('User', json);
-    if (!data) return 'Id传入有误';
-    return data;
-  }
-
-  // 删除用户数据
+  // 删除角色
   async del(id) {
-    const data = await this._delete('User', id);
+    const data = await this._delete('Permission', id);
     if (!data) return 'Id传入有误';
     return data;
   }
 
+  // 编辑角色
+  async edit(json) {
+    const data = await this._edit('Permission', json);
+    if (!data) return 'Id传入有误';
+    return data;
+  }
 }
 
 module.exports = PermissionService;
