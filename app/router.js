@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-14 23:58:11
+ * @LastEditTime: 2022-07-16 00:05:32
  */
 'use strict';
 
@@ -18,4 +18,5 @@ module.exports = app => {
   require('./router/user')(app);
   require('./router/category')(app);
   require('./router/permission')(app);
+  require('./router/article')(app);
 };
