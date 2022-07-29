@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-15 20:17:40
+ * @LastEditTime: 2022-07-16 16:39:54
  */
 
 
@@ -34,7 +34,7 @@ class CategoryService extends BaseService {
       if (req.name === item.name) {
         return false;
       }
-      const res = await this.add({ name: req.name }, '新增分类成功！');
+      const res = await this.add({ name: req.name, creartor_id: req.creartor_id }, '新增分类成功！');
 
       return res;
     }
@@ -50,6 +50,13 @@ class CategoryService extends BaseService {
   // 删除分类
   async del(id) {
     const data = await this._delete('Category', id);
+    if (!data) return 'Id传入有误';
+    return data;
+  }
+
+  // 编辑分类
+  async edit(json) {
+    const data = await this._edit('Category', json);
     if (!data) return 'Id传入有误';
     return data;
   }

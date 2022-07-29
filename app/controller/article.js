@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-16 00:46:10
+ * @LastEditTime: 2022-07-28 22:18:19
  */
 'use strict';
 
@@ -15,6 +15,12 @@ class ArticleController extends BaseController {
   async findAll() {
     const { service } = this;
     const result = await service.article.findAll();
+    this.success(result, 'OK');
+  }
+  // 查询所有数据
+  async findListBySee() {
+    const { service } = this;
+    const result = await service.article.findListBySee();
     this.success(result, 'OK');
   }
 
@@ -52,6 +58,21 @@ class ArticleController extends BaseController {
     const result = await service.article.edit({ id });
     if (result === 'Server error') this.error(0, result);
     this.success(1, result);
+  }
+
+  // 根据目录id查询该目录下的文章列表
+  async findListById() {
+    const { ctx, service } = this;
+    const req = ctx.request.body;
+    const result = await service.article.findArtById(req);
+    this.success(result, 'OK');
+  }
+  // 根据目录id查询该目录下的文章列表
+  async getArtById() {
+    const { ctx, service } = this;
+    const req = ctx.request.body;
+    const result = await service.article.getArtById(req);
+    this.success(result, 'OK');
   }
 }
 

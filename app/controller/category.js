@@ -4,7 +4,7 @@
  * @Version: 0.1
  * @Autor: fulei
  * @LastEditors: fulei
- * @LastEditTime: 2022-07-15 20:17:00
+ * @LastEditTime: 2022-07-16 16:41:18
  */
 // app/controller/user.js
 'use strict';
@@ -30,7 +30,7 @@ class CategoryController extends BaseController {
     }
   }
 
-  // 根据前端传的id删除用户
+  // 根据前端传的id删除分类
   async delUserById() {
     const { ctx, service } = this;
     const id = ctx.request.body.id;
@@ -40,14 +40,14 @@ class CategoryController extends BaseController {
     this.success(1, result);
   }
 
-  // 修改数据
-  // async edit() {
-  //   const { ctx, service } = this;
-  //   const { id, permission, desc } = ctx.request.body;
-  //   const result = await service.permission.edit({ id, permission, desc });
-  //   if (result === 'Server error') this.error(0, result);
-  //   this.success(1, result);
-  // }
+  // 修改分类数据
+  async edit() {
+    const { ctx, service } = this;
+    const { id, name, creartor_id } = ctx.request.body;
+    const result = await service.permission.edit({ id, name, creartor_id });
+    if (result === 'Server error') this.error(0, result);
+    this.success(1, result);
+  }
 
 
 }
